@@ -1,6 +1,8 @@
 ---
 - name: Create file on all hosts
   hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   become: yes  # This allows the playbook to run with elevated privileges if necessary
   gather_facts: yes  # Gather facts about the remote hosts
 
