@@ -1,0 +1,10 @@
+---
+- name: Check OS Version
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  gather_facts: no  # Ensure facts about the hosts are gathered
+  tasks:
+    - name: Display OS Version
+      debug:
+        msg: "OS Version on {{ ansible_hostname }} is {{ ansible_distribution }} {{ ansible_distribution_version }}"
