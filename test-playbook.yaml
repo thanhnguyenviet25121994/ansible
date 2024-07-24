@@ -1,0 +1,14 @@
+---
+- name: Create file on all hosts
+  hosts: all
+  become: yes  # This allows the playbook to run with elevated privileges if necessary
+  gather_facts: yes  # Gather facts about the remote hosts
+
+  tasks:
+    - name: Gather facts
+      setup:  # This module gathers facts about remote hosts
+
+    - name: Create file
+      file:
+        path: /home/k8s/test-ansible-123
+        state: touch
