@@ -1,10 +1,11 @@
 ---
-- name: Check OS Version
+- name: Create a file
   hosts: all
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  gather_facts: no  # Ensure facts about the hosts are gathered
+  gather_facts: no
   tasks:
-    - name: Display OS Version
-      debug:
-        msg: "OS Version on {{ ansible_hostname }} is {{ ansible_distribution }} {{ ansible_distribution_version }}"
+    - name: Create a text file
+      file:
+        path: /home/file-by-ansible  # Specify the path where you want to create the file
+        state: touch                     # Use 'touch' to create an empty file
