@@ -1,12 +1,10 @@
 ---
-- name: Create file on all hosts
+- name: Check OS Version
   hosts: all
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  become: yes  # This allows the playbook to run with elevated privileges if necessary
-
+  gather_facts: no  # Ensure facts about the hosts are gathered
   tasks:
-    - name: Create file
-      file:
-        path: /home/k8s/test-ansible-123
-        state: touch
+    - name: Display OS Version
+      debug:
+        msg: "OS Version on {{ ansible_hostname }} is {{ ansible_distribution }} {{ ansible_distribution_version }}"
