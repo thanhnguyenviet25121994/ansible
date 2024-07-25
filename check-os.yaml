@@ -1,0 +1,14 @@
+---
+- name: Get OS Version
+  hosts: all
+  gather_facts: no  # Disable gathering facts to speed up execution
+
+  tasks:
+    - name: Run command and gather output
+      shell: cat /etc/os-release | grep VERSION
+      register: os_version_output
+      changed_when: false  # Mark task as unchanged
+
+    - name: Display output
+      debug:
+        msg: "{{ os_version_output.stdout }}"
